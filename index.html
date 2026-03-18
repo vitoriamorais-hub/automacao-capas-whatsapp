@@ -21,10 +21,10 @@
                     <label for="clientLogo" class="btn btn-primary">
                         <span>Escolher Arquivo</span>
                     </label>
-                    <input type="file" id="clientLogo" accept="image/png, image/jpeg, image/jpg">
+                    <input type="file" id="upload" accept="image/*">
                     <span id="fileName" class="file-name">Nenhum arquivo selecionado</span>
                 </div>
-                <button id="generateBtn" class="btn btn-success" disabled>2. Gerar Capa</button>
+                <button onclick="generateImage()">2. Gerar Capa</button>
             </section>
 
             <section class="preview-area">
