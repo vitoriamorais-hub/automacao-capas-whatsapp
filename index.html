@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Capas para WhatsApp - Kikker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Gerador de Capas para WhatsApp</h1>
+            <p>Siga os passos abaixo para gerar a capa do grupo.</p>
+        </header>
+
+        <main>
+            <section class="controls">
+                <h2>1. Upload do Logo do Cliente</h2>
+                <div class="file-input-wrapper">
+                    <label for="clientLogo" class="btn btn-primary">
+                        <span>Escolher Arquivo</span>
+                    </label>
+                    <input type="file" id="clientLogo" accept="image/png, image/jpeg, image/jpg">
+                    <span id="fileName" class="file-name">Nenhum arquivo selecionado</span>
+                </div>
+                <button id="generateBtn" class="btn btn-success" disabled>2. Gerar Capa</button>
+            </section>
+
+            <section class="preview-area">
+                <h2>Pré-visualização</h2>
+                <div class="canvas-wrapper">
+                    <canvas id="canvasPreview" width="500" height="500"></canvas>
+                </div>
+                <button id="downloadBtn" class="btn btn-download" style="display: none;">3. Baixar Capa (PNG)</button>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Kikker. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
