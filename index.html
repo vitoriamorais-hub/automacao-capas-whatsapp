@@ -1,46 +1,45 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de Capas para WhatsApp - Kikker</title>
+    <title>Gerador de Capas Kikker</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Gerador de Capas para WhatsApp</h1>
-            <p>Siga os passos abaixo para gerar a capa do grupo.</p>
-        </header>
+<div class="container">
+    <div class="card">
+        <h1>Gerador de Capas para WhatsApp</h1>
+        <p>Siga os passos abaixo para gerar a capa do grupo.</p>
+        <hr>
 
-        <main>
-            <section class="controls">
-                <h2>1. Upload do Logo do Cliente</h2>
-                <div class="file-input-wrapper">
-                    <label for="clientLogo" class="btn btn-primary">
-                        <span>Escolher Arquivo</span>
-                    </label>
-                    <input type="file" id="upload" accept="image/*">
-                    <span id="fileName" class="file-name">Nenhum arquivo selecionado</span>
-                </div>
-                <button onclick="generateImage()">2. Gerar Capa</button>
-            </section>
+        <div class="main-content">
+            <div class="controls">
+                <h3>1. Upload do Logo do Cliente</h3>
+                <input type="file" id="upload" accept="image/*">
+                
+                <br><br>
+                
+                <button onclick="generateImage()" class="btn-gerar">2. Gerar Capa</button>
+                
+                <br><br>
 
-            <section class="preview-area">
-                <h2>Pré-visualização</h2>
-                <div class="canvas-wrapper">
-                    <canvas id="canvasPreview" width="500" height="500"></canvas>
-                </div>
-                <button id="downloadBtn" class="btn btn-download" style="display: none;">3. Baixar Capa (PNG)</button>
-            </section>
-        </main>
+                <a id="download" download="capa-grupo.png" class="btn-download" style="display:none;">3. Baixar Imagem Pronta</a>
+            </div>
 
-        <footer>
-            <p>&copy; 2023 Kikker. Todos os direitos reservados.</p>
+            <div class="preview-area">
+                <h3>Pré-visualização</h3>
+                <canvas id="canvas" width="500" height="500"></canvas>
+            </div>
+        </div>
+        
+        <hr>
+        <footer style="font-size: 12px; color: #666;">
+            © 2026 Kikker. Todos os direitos reservados.
         </footer>
     </div>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
