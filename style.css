@@ -1,0 +1,148 @@
+:root {
+    --primary-color: #0c4a6e; /* Cor do seu background teal */
+    --accent-color: #facc15; /* Cor para destaques */
+    --bg-color: #f1f5f9;
+    --text-color: #1f2937;
+    --border-color: #e2e8f0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+header, footer {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 30px;
+}
+
+footer {
+    border-top: 1px solid var(--border-color);
+    border-bottom: none;
+    margin-top: 40px;
+    margin-bottom: 0;
+    font-size: 0.9em;
+    color: #6b7280;
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: var(--primary-color);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+p {
+    margin-top: 0;
+    color: #4b5563;
+}
+
+main {
+    display: flex;
+    gap: 40px;
+}
+
+.controls, .preview-area {
+    flex: 1;
+}
+
+.file-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #073b57;
+}
+
+.btn-success {
+    background-color: #16a34a;
+    color: white;
+    width: 100%;
+}
+
+.btn-success:hover:not(:disabled) {
+    background-color: #15803d;
+}
+
+.btn-success:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-download {
+    background-color: var(--accent-color);
+    color: #1f2937;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.btn-download:hover {
+    background-color: #eab308;
+}
+
+.file-name {
+    font-size: 0.9em;
+    color: #6b7280;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 200px;
+}
+
+.canvas-wrapper {
+    border: 4px solid var(--border-color);
+    border-radius: 12px;
+    padding: 10px;
+    background-color: #fff;
+    display: inline-block;
+    box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.06);
+}
+
+#canvasPreview {
+    display: block;
+    max-width: 100%; /* Garante que o canvas não quebre o layout */
+    height: auto;
+    background-color: #fff; /* Fundo do canvas enquanto carrega */
+}
