@@ -1,10 +1,11 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-// Configurações de Tamanho Máximo para evitar distorção
-const MAX_LOGO_SIZE = 200; 
+// CONFIGURAÇÃO DE TAMANHOS (A Kikker maior que o cliente)
+const MAX_KIKKER_SIZE = 250; 
+const MAX_CLIENT_SIZE = 180; 
 
-// Carregando as imagens base do seu GitHub
+// Imagens base
 const background = new Image();
 background.src = "background.png"; 
 
@@ -14,14 +15,12 @@ kikkerLogo.src = "logo-kikker.png";
 let clientLogo = new Image();
 let clientLogoLoaded = false;
 
-// Evento de Upload
 document.getElementById("upload").addEventListener("change", function(e) {
     const reader = new FileReader();
     reader.onload = function(event) {
         clientLogo = new Image();
         clientLogo.onload = function() {
             clientLogoLoaded = true;
-            console.log("Logo do cliente carregada com sucesso!");
         };
         clientLogo.src = event.target.result;
     };
@@ -30,43 +29,39 @@ document.getElementById("upload").addEventListener("change", function(e) {
 
 function generateImage() {
     if (!clientLogoLoaded) {
-        alert("Por favor, selecione primeiro o arquivo do logo do cliente!");
+        alert("Por favor, selecione o logo do cliente primeiro!");
         return;
     }
 
-    // Limpa o canvas antes de desenhar
     ctx.clearRect(0, 0, 500, 500);
 
-    // 1. DESENHA O FUNDO (BACKGROUND)
+    // 1. Desenha o Fundo
     ctx.drawImage(background, 0, 0, 500, 500);
 
-    // 2. DESENHA O LOGO KIKKER (TOPO) - Com cálculo de proporção
-    const ratioK = Math.min(MAX_LOGO_SIZE / kikkerLogo.width, (MAX_LOGO_SIZE - 100) / kikkerLogo.height);
+    // 2. Desenha o Logo KIKKER (MAIOR - TOPO)
+    const ratioK = Math.min(MAX_KIKKER_SIZE / kikkerLogo.width, MAX_KIKKER_SIZE / kikkerLogo.height);
     const kw = kikkerLogo.width * ratioK;
     const kh = kikkerLogo.height * ratioK;
-    const kx = (500 - kw) / 2;
-    const ky = 60; // Posição Y no topo
-    ctx.drawImage(kikkerLogo, kx, ky, kw, kh);
+    ctx.drawImage(kikkerLogo, (500 - kw) / 2, 60, kw, kh);
 
-    // 3. LINHA DIVISÓRIA
+    // 3. Linha Divisória
     ctx.beginPath();
     ctx.moveTo(150, 200);
     ctx.lineTo(350, 200);
-    ctx.strokeStyle = "rgba(204, 204, 204, 0.5)";
+    ctx.strokeStyle = "rgba(204, 204, 204, 0.6)";
     ctx.lineWidth = 1;
     ctx.stroke();
 
-    // 4. DESENHA O LOGO DO CLIENTE (BASE) - Com cálculo de proporção
-    // Usamos o mesmo MAX_LOGO_SIZE para que fiquem equilibrados
-    const ratioC = Math.min(MAX_LOGO_SIZE / clientLogo.width, MAX_LOGO_SIZE / clientLogo.height);
+    // 4. Desenha o Logo do CLIENTE (MENOR - BASE)
+    const ratioC = Math.min(MAX_CLIENT_SIZE / clientLogo.width, MAX_CLIENT_SIZE / clientLogo.height);
     const cw = clientLogo.width * ratioC;
     const ch = clientLogo.height * ratioC;
-    const cx = (500 - cw) / 2;
-    const cy = 250; // Posição Y na parte de baixo
-    ctx.drawImage(clientLogo, cx, cy, cw, ch);
+    // Centralizado e posicionado abaixo da linha
+    ctx.drawImage(clientLogo, (500 - cw) / 2, 260, cw, ch);
 
-    // 5. LIBERA O DOWNLOAD
+    // 5. Download
     const link = document.getElementById("download");
     link.href = canvas.toDataURL("image/png");
     link.style.display = "inline-block";
+    link.innerText = "3. Baixar Capa de Grupo";
 }
